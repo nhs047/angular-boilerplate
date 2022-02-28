@@ -1,0 +1,325 @@
+@import '~@angular/material/theming';
+@import './colors/color.scss';
+
+
+@include mat-core();
+
+$mat-primary: (
+    50 : $primary-50,
+    100 : $primary-100,
+    200 : $primary-200,
+    300 : $primary-300,
+    400 : $primary-400,
+    500 : $primary-500,
+    600 : $primary-600,
+    700 : $primary-700,
+    800 : $primary-800,
+    900 : $primary-900,
+    A100 : $primary-A100,
+    A200 : $primary-A200,
+    A400 : $primary-A400,
+    A700 : $primary-A700,
+    contrast: (
+        50 : $primary-contrast-50,
+        100 : $primary-contrast-100,
+        200 : $primary-contrast-200,
+        300 : $primary-contrast-300,
+        400 : $primary-contrast-400,
+        500 : $primary-contrast-500,
+        600 : $primary-contrast-600,
+        700 : $primary-contrast-700,
+        800 : $primary-contrast-800,
+        900 : $primary-contrast-900,
+        A100 : $primary-contrast-A100,
+        A200 : $primary-contrast-A200,
+        A400 : $primary-contrast-A400,
+        A700 : $primary-contrast-A700,
+    )
+);
+$mat-accent: (
+    25 : $accent-25,
+    50 : $accent-50,
+    100 : $accent-100,
+    200 : $accent-200,
+    300 : $accent-300,
+    400 : $accent-400,
+    500 : $accent-500,
+    600 : $accent-600,
+    700 : $accent-700,
+    800 : $accent-800,
+    900 : $accent-900,
+    A100 : $accent-A100,
+    A200 : $accent-A200,
+    A400 : $accent-A400,
+    A700 : $accent-A700,
+    contrast: (
+        50 : $accent-contrast-50,
+        100 : $accent-contrast-100,
+        200 : $accent-contrast-200,
+        300 : $accent-contrast-300,
+        400 : $accent-contrast-400,
+        500 : $accent-contrast-500,
+        600 : $accent-contrast-600,
+        700 : $accent-contrast-700,
+        800 : $accent-contrast-800,
+        900 : $accent-contrast-900,
+        A100 : $accent-contrast-A100,
+        A200 : $accent-contrast-A200,
+        A400 : $accent-contrast-A400,
+        A700 : $accent-contrast-A700,
+    )
+);
+
+$mat-warn: (
+    50 : $warn-50,
+    100 : $warn-100,
+    200 : $warn-200,
+    300 : $warn-300,
+    400 : $warn-400,
+    500 : $warn-500,
+    600 : $warn-600,
+    700 : $warn-700,
+    800 : $warn-800,
+    900 : $warn-900,
+    A100 : $warn-A100,
+    A200 : $warn-A200,
+    A400 : $warn-A400,
+    A700 : $warn-A700,
+    contrast: (
+        50 : $warn-contrast-50,
+        100 : $warn-contrast-100,
+        200 : $warn-contrast-200,
+        300 : $warn-contrast-300,
+        400 : $warn-contrast-400,
+        500 : $warn-contrast-500,
+        600 : $warn-contrast-600,
+        700 : $warn-contrast-700,
+        800 : $warn-contrast-800,
+        900 : $warn-contrast-900,
+        A100 : $warn-contrast-A100,
+        A200 : $warn-contrast-A200,
+        A400 : $warn-contrast-A400,
+        A700 : $warn-contrast-A700,
+    )
+);
+
+$default-primary-palette: mat-palette($mat-primary);
+$default-accent-palette: mat-palette($mat-accent, 600, 400, 700);
+$default-warn-palette: mat-palette($mat-warn);
+
+$theme: mat-light-theme($default-primary-palette, $default-accent-palette, $default-warn-palette);
+
+@include angular-material-theme($theme);
+
+
+@font-face {
+    font-family: "Nunito";
+    src: local("Nunito"), url(./assets/fonts/Nunito-Regular.ttf) format("truetype");
+}
+
+body {
+    font-family: "Nunito", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+.custom-dialog {
+    width: 587px;
+    border-radius: 5px;
+  }
+
+.t-align-left {
+    text-align: left;
+}
+
+.t-align-center {
+    text-align: center;
+}
+
+.font-size-12 {
+    font-size: 12px;
+}
+
+.font-size-14 {
+    font-size: 14px;
+}
+
+.font-size-16 {
+    font-size: 16px;
+}
+
+.font-size-18 {
+    font-size: 18px;
+}
+
+.font-size-20 {
+    font-size: 20px;
+}
+
+.w-100-p {
+    width: 100%;
+}
+
+.h-100-p {
+    height: 100%;
+}
+
+.pl-4 {
+    padding-left: 4px;
+}
+
+.pr-4 {
+    padding-right: 4px;
+}
+
+.pt-4 {
+    padding-top: 4px;
+}
+
+.pb-4 {
+    padding-bottom: 4px;
+}
+
+.p-4 {
+    padding: 4px;
+}
+
+.pl-8 {
+    padding-left: 8px;
+}
+
+.pr-8 {
+    padding-right: 8px;
+}
+
+.pt-8 {
+    padding-top: 8px;
+}
+
+.pb-8 {
+    padding-bottom: 8px;
+}
+
+.p-8 {
+    padding: 8px;
+}
+
+.pl-12 {
+    padding-left: 12px;
+}
+
+.pr-12 {
+    padding-right: 12px;
+}
+
+.pt-12 {
+    padding-top: 12px;
+}
+
+.pb-12 {
+    padding-bottom: 12px;
+}
+
+.p-12 {
+    padding: 12px;
+}
+
+.pl-16 {
+    padding-left: 16px;
+}
+
+.pr-16 {
+    padding-right: 16px;
+}
+
+.pt-16 {
+    padding-top: 16px;
+}
+
+.pb-16 {
+    padding-bottom: 16px;
+}
+
+.p-16 {
+    padding: 16px;
+}
+
+.ml-4 {
+    margin-left: 4px;
+}
+
+.mr-4 {
+    margin-right: 4px;
+}
+
+.mt-4 {
+    margin-top: 4px;
+}
+
+.mb-4 {
+    margin-bottom: 4px;
+}
+
+.m-4 {
+    margin: 4px;
+}
+
+.ml-8 {
+    margin-left: 8px;
+}
+
+.mr-8 {
+    margin-right: 8px;
+}
+
+.mt-8 {
+    margin-top: 8px;
+}
+
+.mb-8 {
+    margin-bottom: 8px;
+}
+
+.m-8 {
+    margin: 8px;
+}
+
+.ml-12 {
+    margin-left: 12px;
+}
+
+.mr-12 {
+    margin-right: 12px;
+}
+
+.mt-12 {
+    margin-top: 12px;
+}
+
+.mb-12 {
+    margin-bottom: 12px;
+}
+
+.m-12 {
+    margin: 12px;
+}
+
+.ml-16 {
+    margin-left: 16px;
+}
+
+.mr-16 {
+    margin-right: 16px;
+}
+
+.mt-16 {
+    margin-top: 16px;
+}
+
+.mb-16 {
+    margin-bottom: 16px;
+}
+
+.m-16 {
+    margin: 16px;
+}
+
+

@@ -1,10 +1,16 @@
-﻿import { Component } from '@angular/core';
+import { Component } from '@angular/core';
+import { Translate } from '../shared/pipes/language-parser.pipe';
 
-import { AccountService } from '@app/_services';
+@Component({
+  selector: 'home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
+})
 
-@Component({ templateUrl: 'home.component.html' })
 export class HomeComponent {
-    account = this.accountService.accountValue;
-
-    constructor(private accountService: AccountService) { }
+  /**
+   *
+   */
+  constructor() { }
+  title = 'Home';
 }

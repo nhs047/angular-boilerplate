@@ -1,0 +1,29 @@
+
+
+  <div class="modal-header h-56 mb-16" fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="row">
+        <p class="primary-text-color p-0 m-0 font-size-16 line-height-28">
+          {{ data.header.title | translate }}</p>
+        </div>
+        <div *ngIf="data && data.header && data.header.closeButton">
+        <button mat-icon-button (click)="onCancel()">
+            <mat-icon class="font-size-16 line-height-24">close</mat-icon>
+        </button>
+        </div>
+  </div>
+
+  <app-dialog-body [isLoadingEnable]="isLoadingEnable" [template]="data.template.body"></app-dialog-body>
+
+  <div class="mt-16" fxLayout="row" fxLayoutAlign="end end">
+    <div>
+      <button mat-button mat-primary class="font-size-16 cancel-btn secondary-text-color-two legacy-bold mr-8" (click)="onCancel()">
+        {{('CANCEL' | translate)}}
+      </button>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" class="legacy-bold" aria-label="Save"
+              (click)="onConfirm()" [disabled]="disableConfirm || (data && data.data && data.data.invalid)">
+        {{'SAVE' | translate}}
+      </button>
+    </div>
+  </div>
