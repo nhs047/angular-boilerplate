@@ -1,46 +1,62 @@
-<div fxFlex="100%" fxLayout="column">
-    <mat-toolbar class="border-radius-5px">
-        <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
-            <mat-icon *ngIf="!sidenav.opened" class="material-icons-outlined">menu</mat-icon>
-            <mat-icon *ngIf="sidenav.opened" class="material-icons-outlined">close</mat-icon>
-        </button>
-        {{title}}
-    </mat-toolbar>
+<div fxFlex="100%" fxLayout="column" [class]="isDark?'dark-theme':''">
+  <mat-toolbar class="border-radius-5px mat-toolbar mat-primary space-between">
+        <div>
+            <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+                <mat-icon *ngIf="!sidenav.opened" class="material-icons-outlined">menu</mat-icon>
+                <mat-icon *ngIf="sidenav.opened" class="material-icons-outlined">close</mat-icon>
+            </button>
+            {{title}}
+        </div>    
+        <div class="h-100-p display-flex-row">
+            <div class="h-79-p">
+                <mat-select class="select-style" [(value)]="language">
+                    <mat-option value="en-US">en-US</mat-option>
+                    <mat-option value="de-DE">de-DE</mat-option>
+                </mat-select>
+            </div>
+           
+            <!--  -->
+            <div class="h-100-p" *ngIf="isDark;else light_theme">
+                <button class="h-100-p" mat-raised-button (click)="changeTheme(false)" color="secondary">Change to Light</button>
+            </div>
+            <ng-template #light_theme>
+                <button class="h-100-p" mat-raised-button (click)="changeTheme(true)" color="secondary">Changee to Dark</button>
+            </ng-template>
+        </div>  
+  </mat-toolbar>
     
-    
-      
-    <mat-sidenav-container flexLayout="row" fxFlex="100%">
-        <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8 border-radius-5px" flexLayout="column" flexLayoutAlign="start start">
-    
-            <button mat-button class="menu-button mb-4" (click)="redirect('/')">
+  <mat-sidenav-container flexLayout="row" fxFlex="100%">
+      <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8 border-radius-5px mat-sidenav mat-primary background-primary" color="primary" flexLayout="column" flexLayoutAlign="start start">
+        <div class="display-flex-column">
+            <a class="menu-button mb-8 mt-8 menu-item" (click)="redirect('/')">
                 <mat-icon>home</mat-icon>
-                <span>{{ "HOME" | translate }}</span>
-            </button>
-    
-            <button mat-button class="menu-button mb-4">
+                <span class="ml-4">{{ "HOME" | translate }}</span>
+            </a>
+            <a class="menu-button mb-8 mt-8 menu-item" (click)="redirect('/about')">
                 <mat-icon>info</mat-icon>
-                <span>{{ "ABOUT" | translate }}</span>
-            </button>
+                <span class="ml-4">{{ "ABOUT" | translate }}</span>
+            </a>
     
             <mat-divider></mat-divider>
     
-            <button mat-button class="menu-button mb-4">
+            <a class="menu-button mb-8 mt-8 menu-item" (click)="redirect('/help')">
                 <mat-icon>help</mat-icon>
-                <span>{{"HELP" | translate}}</span>
-            </button>
-    
-        </mat-sidenav>
-    
-        <mat-sidenav-content fxLayout="row" fxFlex="100%" flexLayoutAlign="start start">
-            <div class="content mat-elevation-z8 border-radius-5px p-16" ngClass.gt-sm="ml-8" fxLayout="column" fxFlex="100%">
-              <router-outlet></router-outlet>
-            </div>
-        </mat-sidenav-content>
-        
-    </mat-sidenav-container>
+                <span class="ml-4">{{"HELP" | translate}}</span>
+            </a>
+        </div>
+  
+      </mat-sidenav>
+  
+      <mat-sidenav-content fxLayout="row" fxFlex="100%" flexLayoutAlign="start start">
+          <div class="content mat-elevation-z8 border-radius-5px p-16" ngClass.gt-sm="ml-8" fxLayout="column" fxFlex="100%">
+            <router-outlet></router-outlet>
+          </div>
+      </mat-sidenav-content>
+      
+  </mat-sidenav-container>
 
-    <mat-toolbar class="border-radius-5px height-30">
-        <span class="t-align-center font-size-12 w-100-p">Copyright &copy; 2022</span>
-    </mat-toolbar>
+  <mat-toolbar class="border-radius-5px height-30 mat-toolbar mat-primary">
+      <span class="t-align-center font-size-12 w-100-p">Copyright &copy; 2023</span>
+  </mat-toolbar>
 </div>
 

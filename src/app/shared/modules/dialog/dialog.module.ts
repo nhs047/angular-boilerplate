@@ -26,7 +26,7 @@ import { DialogService } from './serivces/dialog.service';
   declarations: [DialogBodyComponent, DialogMainComponent],
   exports: [DialogBodyComponent, DialogMainComponent],
   providers: [DialogRef, DialogService],
-  entryComponents: [DialogMainComponent]
+  // entryComponents: [DialogMainComponent]
 })
 export class DialogModule { }
 export * from './serivces/dialog.service';

@@ -1,4 +1,5 @@
 import { PipeTransform, Pipe } from '@angular/core';
+
 import languages from '../../root/language/language.json';
 
 @Pipe({name: 'translate'})

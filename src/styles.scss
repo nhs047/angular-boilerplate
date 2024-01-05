@@ -1,8 +1,9 @@
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
+@import "../node_modules//@angular/material/core/theming/theming";
+
 @import './colors/color.scss';
 
-
-@include mat-core();
+@include mat.core();
 
 $mat-primary: (
     50 : $primary-50,
@@ -103,14 +104,205 @@ $mat-warn: (
     )
 );
 
-$default-primary-palette: mat-palette($mat-primary);
-$default-accent-palette: mat-palette($mat-accent, 600, 400, 700);
-$default-warn-palette: mat-palette($mat-warn);
+$mat-primary-dark: (
+    50 : $primary-contrast-50,
+    100 : $primary-contrast-100,
+    200 : $primary-contrast-200,
+    300 : $primary-contrast-300,
+    400 : $primary-contrast-400,
+    500 : $primary-contrast-500,
+    600 : $primary-contrast-600,
+    700 : $primary-contrast-700,
+    800 : $primary-contrast-800,
+    900 : $primary-contrast-900,
+    A100 : $primary-contrast-A100,
+    A200 : $primary-contrast-A200,
+    A400 : $primary-contrast-A400,
+    A700 : $primary-contrast-A700,
+    contrast: (
+        50 : $primary-50,
+        100 : $primary-100,
+        200 : $primary-200,
+        300 : $primary-300,
+        400 : $primary-400,
+        500 : $primary-500,
+        600 : $primary-600,
+        700 : $primary-700,
+        800 : $primary-800,
+        900 : $primary-900,
+        A100 : $primary-A100,
+        A200 : $primary-A200,
+        A400 : $primary-A400,
+        A700 : $primary-A700,
+    )
+);
+$mat-accent-dark: (
+    50 : $accent-contrast-50,
+    100 : $accent-contrast-100,
+    200 : $accent-contrast-200,
+    300 : $accent-contrast-300,
+    400 : $accent-contrast-400,
+    500 : $accent-contrast-500,
+    600 : $accent-contrast-600,
+    700 : $accent-contrast-700,
+    800 : $accent-contrast-800,
+    900 : $accent-contrast-900,
+    A100 : $accent-contrast-A100,
+    A200 : $accent-contrast-A200,
+    A400 : $accent-contrast-A400,
+    A700 : $accent-contrast-A700,
+    contrast: (
+        25: $accent-25,
+        50 : $accent-50,
+        100 : $accent-100,
+        200 : $accent-200,
+        300 : $accent-300,
+        400 : $accent-400,
+        500 : $accent-500,
+        600 : $accent-600,
+        700 : $accent-700,
+        800 : $accent-800,
+        900 : $accent-900,
+        A100 : $accent-A100,
+        A200 : $accent-A200,
+        A400 : $accent-A400,
+        A700 : $accent-A700,
+    )
+);
 
-$theme: mat-light-theme($default-primary-palette, $default-accent-palette, $default-warn-palette);
+$mat-warn-dark: (
+    50 : $warn-contrast-50,
+    100 : $warn-contrast-100,
+    200 : $warn-contrast-200,
+    300 : $warn-contrast-300,
+    400 : $warn-contrast-400,
+    500 : $warn-contrast-500,
+    600 : $warn-contrast-600,
+    700 : $warn-contrast-700,
+    800 : $warn-contrast-800,
+    900 : $warn-contrast-900,
+    A100 : $warn-contrast-A100,
+    A200 : $warn-contrast-A200,
+    A400 : $warn-contrast-A400,
+    A700 : $warn-contrast-A700,
+    contrast: (
+        50 : $warn-50,
+        100 : $warn-100,
+        200 : $warn-200,
+        300 : $warn-300,
+        400 : $warn-400,
+        500 : $warn-500,
+        600 : $warn-600,
+        700 : $warn-700,
+        800 : $warn-800,
+        900 : $warn-900,
+        A100 : $warn-A100,
+        A200 : $warn-A200,
+        A400 : $warn-A400,
+        A700 : $warn-A700,
+    )
+);
 
-@include angular-material-theme($theme);
+$my-primary: mat.define-palette(mat.$light-green-palette, 500);
+$my-accent: mat.define-palette(mat.$teal-palette, 500);
+$my-warn: mat.define-palette(mat.$orange-palette, 500);
 
+$theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $my-primary,
+            accent: $my-accent,
+            warn: $my-warn
+        ),
+    )
+);
+
+$my-primary-dark: mat.define-palette($mat-primary, 500);
+$my-accent-dark: mat.define-palette($mat-accent, 500);
+$my-warn-dark: mat.define-palette($mat-warn, 500);
+
+$theme-dark: mat.define-dark-theme(
+    (
+        color: (
+            primary: $my-primary-dark,
+            accent: $my-accent-dark,
+            warn: $my-warn-dark
+        ),
+    )
+);
+
+@include mat.all-component-themes($theme);
+$primary50: map-get($my-primary, 50);
+$accent50: map-get($my-accent, 50);
+$primary500: map-get($my-primary, 500);
+$accent500: map-get($my-accent, 500);
+$primary800: map-get($my-primary, 800);
+$accent800: map-get($my-accent, 800);
+
+.background-primary { 
+    background: $primary500;
+}
+.background-secondary { 
+    background: $accent500;
+}
+
+.dark-theme {
+    @include mat.all-component-themes($theme-dark);
+    $primary50: map-get($my-primary-dark, 50);
+    $accent50: map-get($my-accent-dark, 50);
+    $primary500: map-get($my-primary-dark, 500);
+    $accent500: map-get($my-accent-dark, 500);
+    $primary800: map-get($my-primary-dark, 800);
+    $accent800: map-get($my-accent-dark, 800);
+    .background-primary { 
+        background: $primary500;
+    }
+    .background-secondary { 
+        background: $accent500;
+    }
+}
+
+@mixin mat-toolbar-color($config-or-theme) {
+    $config: mat-get-color-config($config-or-theme);
+    $primary: map-get($config, primary);
+    $accent: map-get($config, accent);
+    $warn: map-get($config, warn);
+    // $background: map-get($config, background);
+    $foreground: map-get($config, foreground);
+
+    .mat-toolbar {
+      background: mat-color($background, app-bar);
+      color: mat-color($foreground, text);
+   
+      &.mat-primary {
+        @include _mat-toolbar-color($primary);
+      }
+   
+      &.mat-accent {
+        @include _mat-toolbar-color($accent);
+      }
+   
+      &.mat-warn {
+        @include _mat-toolbar-color($warn);
+      }
+   
+      @include _mat-toolbar-form-field-overrides;
+    }
+  }
+
+  @mixin mat-toolbar-typography($config-or-theme) {
+    $config: mat-get-typography-config($config-or-theme);
+    .mat-toolbar,
+    .mat-toolbar h1,
+    .mat-toolbar h2,
+    .mat-toolbar h3,
+    .mat-toolbar h4,
+    .mat-toolbar h5,
+    .mat-toolbar h6 {
+      @include mat-typography-level-to-styles($config, title);
+      margin: 0;
+    }
+  }
 
 @font-face {
     font-family: "Nunito";
@@ -120,6 +312,7 @@ $theme: mat-light-theme($default-primary-palette, $default-accent-palette, $defa
 body {
     font-family: "Nunito", Arial, Helvetica, sans-serif;
     font-size: 14px;
+    margin: 0px !important;
 }
 .custom-dialog {
     width: 587px;
@@ -322,4 +515,27 @@ body {
     margin: 16px;
 }
 
+.j-content-left {
+    justify-content: left;
+}
 
+.display-flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.display-flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-item {
+    justify-content: left;
+    display: flex; align-items: center;
+    cursor: pointer;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+}

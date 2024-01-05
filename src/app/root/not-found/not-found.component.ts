@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Translate } from "src/app/shared/pipes/language-parser.pipe";
+import { Translate } from "../../shared/pipes/language-parser.pipe";
 
 @Component({
     selector: "app-not-found",

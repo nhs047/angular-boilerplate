@@ -16,13 +16,15 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
   _unsubscribe: Subject<any>;
   title: string = "";
+  isDark = false;
+  language = "en-US";
 
   constructor(
       private activatedRoute: ActivatedRoute, 
       private router: Router, 
       private translate: Translate, 
       private observer: BreakpointObserver,
-      private cdr: ChangeDetectorRef
+      private cdr: ChangeDetectorRef,
     ) {
         this._unsubscribe = new Subject();
     }
@@ -38,13 +40,17 @@ export class AppComponent implements OnInit, AfterViewInit {
       }),
       mergeMap((route) => route.data),
       map((data) => {
-          return data.breadcrumb;
+          return data["breadcrumb"];
       }),
       takeUntil(this._unsubscribe)
     )
     .subscribe((pathString) => {
       this.title = this.translate.transform(pathString);
     });
+   }
+
+   changeTheme(willDark: boolean) {
+    this.isDark = willDark;
    }
 
    ngAfterViewInit() {
@@ -65,7 +71,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngOnDestroy() {
-    this._unsubscribe.next();
+    this._unsubscribe.next(null);
     this._unsubscribe.complete();
   }
 }
